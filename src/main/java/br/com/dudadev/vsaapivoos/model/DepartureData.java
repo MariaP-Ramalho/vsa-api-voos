@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record DepartureData(@JsonAlias("airport") String airport,
-                            @JsonAlias("delay") String delay) {
+public record DepartureData(@JsonAlias("airport") String DepAirport,
+                            @JsonAlias("delay") String DepDelay,
+                            @JsonAlias("timezone") String ArrTimeZone) {
 }
