@@ -1,10 +1,21 @@
 package br.com.dudadev.vsaapivoos.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Flight {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String flightStatus;
+
+    @Embedded
     private DepartureData departureData;
+    @Embedded
     private ArrivalData arrivalData;
+    @Embedded
     private AirlineData airlineData;
+    @Embedded
     private FlightNumberData flightNumberData;
 
     public Flight(String flightStatus, DepartureData departureData, ArrivalData arrivalData, AirlineData airlineData, FlightNumberData flightNumberData) {

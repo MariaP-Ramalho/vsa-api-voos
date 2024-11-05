@@ -1,16 +1,22 @@
 package br.com.dudadev.vsaapivoos.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import jakarta.persistence.Embeddable;
 
+@Embeddable
 public class Departure {
     private String DepAirport;
     private String DepDelay;
     private String ArrTimeZone;
 
-    public Departure(String depAirport, String depDelay, String arrTimeZone) {
+    public Departure(String depAirport, String depDelay, String depTimeZone) {
         this.DepAirport = depAirport;
         this.DepDelay = depDelay;
-        this.ArrTimeZone = arrTimeZone;
+        this.ArrTimeZone = depTimeZone;
+    }
+
+    public Departure() {
+
     }
 
     public String getDepAirport() {
