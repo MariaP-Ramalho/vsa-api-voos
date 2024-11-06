@@ -3,20 +3,20 @@ package br.com.dudadev.vsaapivoos.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "flights")
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String flightStatus;
-
-    @Embedded
-    private DepartureData departureData;
-    @Embedded
-    private ArrivalData arrivalData;
     @Embedded
     private AirlineData airlineData;
     @Embedded
     private FlightNumberData flightNumberData;
+    @Embedded
+    private DepartureData departureData;
+    @Embedded
+    private ArrivalData arrivalData;
 
     public Flight(String flightStatus, DepartureData departureData, ArrivalData arrivalData, AirlineData airlineData, FlightNumberData flightNumberData) {
         this.flightStatus = flightStatus;
@@ -68,6 +68,14 @@ public class Flight {
 
     public void setFlightNumberData(FlightNumberData flightNumberData) {
         this.flightNumberData = flightNumberData;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

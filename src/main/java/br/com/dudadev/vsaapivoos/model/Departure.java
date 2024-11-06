@@ -1,18 +1,19 @@
 package br.com.dudadev.vsaapivoos.model;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.Embeddable;
+
+import java.time.ZonedDateTime;
 
 @Embeddable
 public class Departure {
     private String DepAirport;
     private String DepDelay;
-    private String ArrTimeZone;
+    private String depScheduledDateTime;
 
-    public Departure(String depAirport, String depDelay, String depTimeZone) {
+    public Departure(String depAirport, String depDelay, String depScheduledDateTime) {
         this.DepAirport = depAirport;
         this.DepDelay = depDelay;
-        this.ArrTimeZone = depTimeZone;
+        this.depScheduledDateTime = depScheduledDateTime;
     }
 
     public Departure() {
@@ -35,11 +36,11 @@ public class Departure {
         DepDelay = depDelay;
     }
 
-    public String getArrTimeZone() {
-        return ArrTimeZone;
+    public String getDepScheduledDateTime() {
+        return depScheduledDateTime;
     }
 
-    public void setArrTimeZone(String arrTimeZone) {
-        ArrTimeZone = arrTimeZone;
+    public void setDepScheduledDateTime(String depScheduledDateTime) {
+        this.depScheduledDateTime = depScheduledDateTime;
     }
 }

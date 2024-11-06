@@ -6,9 +6,7 @@ import br.com.dudadev.vsaapivoos.model.FlightsListData;
 import br.com.dudadev.vsaapivoos.repository.FlightRepository;
 import br.com.dudadev.vsaapivoos.service.ConsumeApi;
 import br.com.dudadev.vsaapivoos.service.ConvertData;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.dao.DataIntegrityViolationException;
 
 public class Main {
     private final ConsumeApi consume = new ConsumeApi();
@@ -21,7 +19,7 @@ public class Main {
     }
 
     public void displayMain() {
-        var json = consume.getData("https://api.aviationstack.com/v1/flights?access_key=db226550f98e936b720c595cc9ba99e3&min_delay_arr=60");
+        var json = consume.getData("https://api.aviationstack.com/v1/flights?access_key=db226550f98e936b720c595cc9ba99e3&dep_iata=GRU&min_delay_arr=40");
         FlightsListData flightsListData = converter.getData(json, FlightsListData.class);
 
         processFlights(flightsListData);
@@ -30,7 +28,6 @@ public class Main {
 
     public void processFlights(FlightsListData flightsListData) {
         for (FlightData flightData : flightsListData.flights()) {
-            // Cria um novo objeto Flight para cada entrada de FlightData
             Flight flight = new Flight(
                     flightData.flight_status(),
                     flightData.departureData(),
@@ -38,8 +35,12 @@ public class Main {
                     flightData.airlineData(),
                     flightData.flightNumberData()
             );
-            repository.save(flight);
-            System.out.println(flight); // Exemplo de operação com o objeto Flight
+            try {
+                repository.save(flight);
+                System.out.println("Flight saved: " + flight);
+            } catch (DataIntegrityViolationException e) {
+                System.out.println("Duplicate flight not saved: " + flight);
+            }
         }
     }
 }
