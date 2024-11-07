@@ -2,18 +2,18 @@ package br.com.dudadev.vsaapivoos.model;
 
 import jakarta.persistence.Embeddable;
 
-import java.time.ZonedDateTime;
-
 @Embeddable
 public class Departure {
     private String DepAirport;
-    private String DepDelay;
+    private int DepDelay;
     private String depScheduledDateTime;
+    private String timeZone;
 
-    public Departure(String depAirport, String depDelay, String depScheduledDateTime) {
+    public Departure(String depAirport, int depDelay, String depScheduledDateTime, String timeZone) {
         this.DepAirport = depAirport;
         this.DepDelay = depDelay;
         this.depScheduledDateTime = depScheduledDateTime;
+        this.timeZone = timeZone;
     }
 
     public Departure() {
@@ -28,11 +28,11 @@ public class Departure {
         DepAirport = depAirport;
     }
 
-    public String getDepDelay() {
+    public int getDepDelay() {
         return DepDelay;
     }
 
-    public void setDepDelay(String depDelay) {
+    public void setDepDelay(int depDelay) {
         DepDelay = depDelay;
     }
 
@@ -42,5 +42,13 @@ public class Departure {
 
     public void setDepScheduledDateTime(String depScheduledDateTime) {
         this.depScheduledDateTime = depScheduledDateTime;
+    }
+
+    public String getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
     }
 }

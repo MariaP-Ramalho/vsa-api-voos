@@ -6,10 +6,10 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class Arrival {
     private String arrAirport;
-    private String arrDelay;
+    private int arrDelay;
     private String arrTimeZone;
 
-    public Arrival(String arrAirport, String arrDelay, String arrTimeZone) {
+    public Arrival(String arrAirport, int arrDelay, String arrTimeZone) {
         this.arrAirport = arrAirport;
         this.arrDelay = arrDelay;
         this.arrTimeZone = arrTimeZone;
@@ -27,11 +27,11 @@ public class Arrival {
         this.arrAirport = arrAirport;
     }
 
-    public String getArrDelay() {
+    public int getArrDelay() {
         return arrDelay;
     }
 
-    public void setArrDelay(String arrDelay) {
+    public void setArrDelay(int arrDelay) {
         this.arrDelay = arrDelay;
     }
 

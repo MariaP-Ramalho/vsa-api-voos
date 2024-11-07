@@ -8,6 +8,7 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String flightStatus;
     @Embedded
     private AirlineData airlineData;
@@ -78,6 +79,7 @@ public class Flight {
         this.id = id;
     }
 
+
     @Override
     public String toString() {
         return "Flight{" +
@@ -88,4 +90,5 @@ public class Flight {
                 ", flightNumberData=" + flightNumberData +
                 '}';
     }
+
 }

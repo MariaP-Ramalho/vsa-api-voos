@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 public class VsaApiVoosApplication implements CommandLineRunner {
@@ -19,6 +20,6 @@ public class VsaApiVoosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Main main = new Main(repository);
-		main.displayMain();
+		main.runMain();
 	}
 }
