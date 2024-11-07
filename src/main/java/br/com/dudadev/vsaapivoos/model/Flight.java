@@ -8,6 +8,7 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Enumerated(EnumType.STRING)
     private Priority priority;
     private String flightStatus;
     @Embedded
