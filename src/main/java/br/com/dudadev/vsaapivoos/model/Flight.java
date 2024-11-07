@@ -8,7 +8,7 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    private Priority priority;
     private String flightStatus;
     @Embedded
     private AirlineData airlineData;
@@ -19,12 +19,13 @@ public class Flight {
     @Embedded
     private ArrivalData arrivalData;
 
-    public Flight(String flightStatus, DepartureData departureData, ArrivalData arrivalData, AirlineData airlineData, FlightNumberData flightNumberData) {
+    public Flight(String flightStatus, DepartureData departureData, ArrivalData arrivalData, AirlineData airlineData, FlightNumberData flightNumberData, Priority priority) {
         this.flightStatus = flightStatus;
         this.departureData = departureData;
         this.arrivalData = arrivalData;
         this.airlineData = airlineData;
         this.flightNumberData = flightNumberData;
+        this.priority = priority;
     }
 
     public Flight() {
@@ -79,6 +80,13 @@ public class Flight {
         this.id = id;
     }
 
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
 
     @Override
     public String toString() {
