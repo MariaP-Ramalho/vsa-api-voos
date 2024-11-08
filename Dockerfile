@@ -6,9 +6,10 @@ COPY . .
 RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Etapa de Execução
+RUN ls target
+
 FROM openjdk:17-jdk-slim
 EXPOSE 8080
-COPY --from=build /target/vsa-api-voos-1.jar app.jar
+COPY --from=build /target/*.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
