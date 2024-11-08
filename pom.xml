@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.dudadev</groupId>
-	<artifactId>screenmatch</artifactId>
+	<artifactId>vsa-api-voos</artifactId>
 	<version>1</version>
-	<name>screenmatch</name>
-	<description>screenmatch</description>
+	<name>vsa-api-voos</name>
+	<description>vsa-api-voos</description>
 	<url/>
 	<licenses>
 		<license/>
