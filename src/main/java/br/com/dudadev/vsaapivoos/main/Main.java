@@ -21,7 +21,7 @@ public class Main {
     }
     @Scheduled(fixedRate = 60000)
     public void runMain() {
-        var json = consume.getData("https://api.aviationstack.com/v1/flights?access_key=db226550f98e936b720c595cc9ba99e3&dep_iata=BPS&min_delay_arr=60");
+        var json = consume.getData("https://api.aviationstack.com/v1/flights?access_key=db226550f98e936b720c595cc9ba99e3&dep_iata=GRU&min_delay_arr=60");
         FlightsListData flightsListData = converter.getData(json, FlightsListData.class);
 
         processFlights(flightsListData);
