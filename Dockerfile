@@ -9,7 +9,7 @@ RUN ./mvnw clean package -DskipTests
 RUN ls target
 
 FROM openjdk:17-jdk-slim
-EXPOSE 8080
+EXPOSE 10000
 COPY --from=build /target/*.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
