@@ -3,6 +3,7 @@ RUN apt-get update && \
     apt-get install -y openjdk-17-jdk maven
 
 COPY . .
+RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Etapa de Execução
