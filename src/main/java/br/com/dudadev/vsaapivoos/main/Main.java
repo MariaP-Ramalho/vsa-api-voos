@@ -19,7 +19,7 @@ public class Main {
     public Main(FlightRepository repository) {
         this.repository = repository;
     }
-    @Scheduled(fixedRate = 60000)
+
     public void runMain() {
         var json = consume.getData("https://api.aviationstack.com/v1/flights?access_key=db226550f98e936b720c595cc9ba99e3&dep_iata=GRU&min_delay_arr=60");
         FlightsListData flightsListData = converter.getData(json, FlightsListData.class);
