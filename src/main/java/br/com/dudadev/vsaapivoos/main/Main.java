@@ -8,7 +8,8 @@ import br.com.dudadev.vsaapivoos.repository.FlightRepository;
 import br.com.dudadev.vsaapivoos.service.ConsumeApi;
 import br.com.dudadev.vsaapivoos.service.ConvertData;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.scheduling.annotation.Scheduled;
+
+import java.util.List;
 
 public class Main {
     private final ConsumeApi consume = new ConsumeApi();
@@ -16,16 +17,25 @@ public class Main {
 
     private final FlightRepository repository;
 
+    private final String API_KEY = "1a585b95efd1aecdddca351373fb290c";
+
+    private final String ADRESS = "https://api.aviationstack.com/v1/flights?access_key=" + API_KEY + "&min_delay_arr=60&dep_iata=";
+
+
     public Main(FlightRepository repository) {
         this.repository = repository;
     }
 
     public void runMain() {
-        var json = consume.getData("https://api.aviationstack.com/v1/flights?access_key=1a585b95efd1aecdddca351373fb290c&dep_iata=GRU&min_delay_arr=60");
-        FlightsListData flightsListData = converter.getData(json, FlightsListData.class);
+        List<String> iataCodes = List.of("GRU", "CGH", "VCP", "SSA", "IOS");
 
-        processFlights(flightsListData);
-
+        for (String iataCode : iataCodes) {
+            String url = ADRESS + iataCode;
+            var json = consume.getData(url);
+            FlightsListData flightsListData = converter.getData(json, FlightsListData.class);
+            processFlights(flightsListData);
+            System.out.println("---------------------------DADOS ENVIADOS DO AEROPORTO: " + iataCode + "--------------------------------");
+        }
     }
 
     public void processFlights(FlightsListData flightsListData) {

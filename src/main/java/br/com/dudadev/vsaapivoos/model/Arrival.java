@@ -1,6 +1,5 @@
 package br.com.dudadev.vsaapivoos.model;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.Embeddable;
 
 @Embeddable

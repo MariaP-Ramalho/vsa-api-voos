@@ -3,7 +3,9 @@ package br.com.dudadev.vsaapivoos.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "flights")
+@Table(name = "flights", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"flight_number", "dep_scheduled_date_time"})
+})
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
