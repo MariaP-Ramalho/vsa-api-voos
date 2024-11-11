@@ -8,6 +8,7 @@ import br.com.dudadev.vsaapivoos.repository.FlightRepository;
 import br.com.dudadev.vsaapivoos.service.ConsumeApi;
 import br.com.dudadev.vsaapivoos.service.ConvertData;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Main {
 
     private final FlightRepository repository;
 
-    private final String API_KEY = "1a585b95efd1aecdddca351373fb290c";
+    private final String API_KEY = "f1008c6a24ec5e2e3c79ccb743fff302";
 
     private final String ADRESS = "https://api.aviationstack.com/v1/flights?access_key=" + API_KEY + "&min_delay_arr=60&dep_iata=";
 
@@ -25,7 +26,7 @@ public class Main {
     public Main(FlightRepository repository) {
         this.repository = repository;
     }
-
+    @Scheduled(fixedRate = 900000)
     public void runMain() {
         List<String> iataCodes = List.of("GRU", "CGH", "VCP", "SSA", "IOS");
 
