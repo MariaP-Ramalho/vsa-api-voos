@@ -18,7 +18,7 @@ public class Main {
 
     private final FlightRepository repository;
 
-    private final String API_KEY = "f1008c6a24ec5e2e3c79ccb743fff302";
+    private final String API_KEY = "dfd24599fac1447c52e93886bb3d3a4a";
 
     private final String ADRESS = "https://api.aviationstack.com/v1/flights?access_key=" + API_KEY + "&min_delay_arr=60&dep_iata=";
 
@@ -26,7 +26,7 @@ public class Main {
     public Main(FlightRepository repository) {
         this.repository = repository;
     }
-    @Scheduled(fixedRate = 900000)
+    @Scheduled(cron = "0 */15 * * * *")
     public void runMain() {
         List<String> iataCodes = List.of("GRU", "CGH", "VCP", "SSA", "IOS");
 
